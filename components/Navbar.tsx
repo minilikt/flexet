@@ -33,10 +33,12 @@ export const Navbar = () => {
         {/* Logo */}
         <div className="relative w-[133.04px] h-[37px]">
           <div className="absolute w-[18px] h-[9px] top-1 left-0 rounded-[18.32px_0px_17.62px_0px] border-[2.21px] border-solid border-[#2196f3]" />
-          <img
+          <Image
             className="absolute w-[19px] h-[19px] top-[15px] -left-px"
             alt="Vector"
             src="/vector-1.svg"
+            width={19}
+            height={19}
           />
           <div className="absolute top-0 left-[30px] [font-family:'Roboto_Mono',Helvetica] font-normal text-white text-[27.8px] tracking-[0] leading-[normal]">
             FlexET

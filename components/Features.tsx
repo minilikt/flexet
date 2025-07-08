@@ -67,7 +67,7 @@ export const Features = () => {
           <p className="max-w-[796px] text-[#a1a2a1] text-base sm:text-lg">
             Explore our range of features designed to support you every step of
             the way. From personalized workout plans to nutrition tracking,
-            we've got you covered!
+            we&apos;ve got you covered!
           </p>
         </div>
 

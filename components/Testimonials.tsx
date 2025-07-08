@@ -2,6 +2,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Image from "next/image";
 
 
 export const Testimonials = () => {
@@ -113,23 +114,31 @@ export const Testimonials = () => {
 
             {/* Navigation Buttons */}
             <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full">
-              <Button
+                <Button
                 variant="outline"
                 className="w-[75px] h-[75px] bg-[#363b3e] border-none rounded-none p-0 flex items-center justify-center"
-              >
-                <img
+                >
+                <Image
+                  width={12}
+                  height={15}
                   className="w-3 h-[15px]"
                   alt="Previous"
                   src="/previous-icon.png"
                 />
-              </Button>
+                </Button>
 
-              <Button
+                <Button
                 variant="outline"
                 className="w-[75px] h-[75px] bg-[#363b3e] border-none rounded-none p-0 flex items-center justify-center"
-              >
-                <img className="w-3 h-[15px]" alt="Next" src="/next-icon.png" />
-              </Button>
+                >
+                <Image
+                  width={12}
+                  height={15}
+                  className="w-3 h-[15px]"
+                  alt="Next"
+                  src="/next-icon.png"
+                />
+                </Button>
             </div>
 
             {/* Bottom Avatar */}
@@ -154,10 +163,12 @@ export const Testimonials = () => {
                     className={`relative ${avatar.opacity}`}
                   >
                     <div className="relative w-[88px] h-[88px] bg-[#dfdcd9] rounded-[44px]">
-                      <img
-                        className={`absolute w-20 h-20 ${avatar.position} object-cover`}
-                        alt={`User ${index + 1}`}
-                        src={avatar.src}
+                      <Image
+                      width={80}
+                      height={80}
+                      className={`absolute w-20 h-20 ${avatar.position} object-cover`}
+                      alt={`User ${index + 1}`}
+                      src={avatar.src}
                       />
                     </div>
                   </div>
@@ -180,10 +191,12 @@ export const Testimonials = () => {
                     className={`relative ${avatar.opacity}`}
                   >
                     <div className="relative w-[88px] h-[88px] bg-[#dfdcd9] rounded-[44px]">
-                      <img
-                        className={`absolute w-20 h-20 ${avatar.position} object-cover`}
-                        alt={`User ${index + 7}`}
-                        src={avatar.src}
+                      <Image
+                      width={80}
+                      height={80}
+                      className={`absolute w-20 h-20 ${avatar.position} object-cover`}
+                      alt={`User ${index + 7}`}
+                      src={avatar.src}
                       />
                     </div>
                   </div>

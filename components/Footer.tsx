@@ -1,4 +1,5 @@
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export const Footer = () => {
   // Company links data
@@ -27,10 +28,12 @@ export const Footer = () => {
         {/* Logo Section */}
         <div className="relative w-[200.33px] h-14">
           <div className="absolute w-[27px] h-[13px] top-1.5 left-0 rounded-[18.32px_0px_17.62px_0px] border-[2.21px] border-solid border-[#2196f3]" />
-          <img
+          <Image
             className="absolute w-7 h-7 top-[23px] -left-px"
             alt="Vector"
             src="/vector-1.svg"
+            width={28}
+            height={28}
           />
           <div className="absolute w-[153px] top-0 left-[45px] [font-family:'Roboto_Mono',Helvetica] font-bold text-white text-[27.8px] tracking-[0] leading-[normal]">
             FlexET
