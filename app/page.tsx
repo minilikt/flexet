@@ -1,6 +1,5 @@
 import { CallToAction } from "@/components/CallToAction";
 import { Features } from "@/components/Features";
-import { Footer } from "@/components/Footer";
 import  {MainContent}  from "@/components/MainContent";
 import { Navbar } from "@/components/Navbar";
 

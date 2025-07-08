@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Bell, ForkKnifeCrossed, LucideClockFading, Pen, Target, TriangleAlert, User2, Users } from "lucide-react";
+import { Bell, ForkKnifeCrossed, LucideClockFading, Pen, Target, User2, Users } from "lucide-react";
 
 export const Features = () => {
   const featureCards = [

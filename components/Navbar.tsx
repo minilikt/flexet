@@ -24,8 +24,8 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const isActive = (href: string) =>
-    typeof window !== "undefined" && window.location.pathname === href;
+  // const isActive = (href: string) =>
+  //   typeof window !== "undefined" && window.location.pathname === href;
 
   return (
     <div className="w-full absolute top-[21px] left-0 backdrop-blur-[12.5px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(12.5px)_brightness(100%)] z-50">
