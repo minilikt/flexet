@@ -13,7 +13,7 @@ export const Features = () => {
       icon: Target,
       title: "Goal Setting",
       description: "Set health targets, we'll help reach them.",
-      position: "top-0 left-[876px]",
+      position: "top-0 left-[800px]",
     },
     {
       icon: Pen,
@@ -26,7 +26,7 @@ export const Features = () => {
       icon: LucideClockFading,
       title: "Progress Tracking",
       description: "Track your health easily and visualize progress.",
-      position: "top-[212px] left-[1033px]",
+      position: "top-[212px] left-[980px]",
     },
     {
       icon: Bell,
@@ -38,7 +38,7 @@ export const Features = () => {
       icon: Users,
       title: "Community Features",
       description: "Join a supportive community of fitness enthusiasts.",
-      position: "top-[424px] left-[1033px]",
+      position: "top-[624px] left-[900px]",
     },
     {
       icon: ForkKnifeCrossed,
@@ -52,7 +52,7 @@ export const Features = () => {
       title: "Integration with Other Apps/Devices",
       description:
         "Seamlessly sync with your favorite health apps and devices.",
-      position: "top-[636px] left-[851px]",
+      position: "top-[750px] left-[500px]",
       textColor: "text-white",
     },
   ];
@@ -84,47 +84,48 @@ export const Features = () => {
           <div className="absolute w-full  top-[100px] left-0">
             {featureCards.map((feature, index) => (
               <Card
-                key={`feature-${index}`}
-                className={`absolute ${feature.position} bg-[#ffffff1a] shadow-[0px_4px_4px_#00000040] border-none`}
-              >
-                <CardContent className="flex flex-col items-start gap-2 p-6">
-                  <div className="flex w-[300px] items-center gap-2">
-                    {Array.isArray(feature.icon) ? (
-                      feature.icon.map((IconComponent, i) => (
-                        <IconComponent
-                          key={`icon-${index}-${i}`}
-                          className="size-5 text-white"
-                          aria-label={`${feature.title} icon`}
-                        />
-                      ))
-                    ) : (
-                      <feature.icon className="w-5 h-5 text-white" aria-label={`${feature.title} icon`} />
-                    )}
-                    <h3 className="mt-[-1.00px] font-title-medium text-white text-base">
-                      {feature.title}
-                    </h3>
-                  </div>
-                  <p
-                    className={`font-body-medium ${feature.textColor || "text-[#a1a2a1]"} text-sm`}
-                  >
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
+  key={`feature-${index}`}
+  className={`absolute ${feature.position} bg-[#ffffff1a] shadow-[0px_2px_4px_#00000040] border-none w-[260px]`}
+>
+  <CardContent className="flex flex-col items-start gap-1.5 p-4">
+    <div className="flex items-center gap-1 w-full">
+      {Array.isArray(feature.icon) ? (
+        feature.icon.map((IconComponent, i) => (
+          <IconComponent
+            key={`icon-${index}-${i}`}
+            className="size-4 text-white"
+            aria-label={`${feature.title} icon`}
+          />
+        ))
+      ) : (
+        <feature.icon 
+          className="size-4 text-white" 
+          aria-label={`${feature.title} icon`} 
+        />
+      )}
+      <h3 className="font-title-medium text-white text-sm leading-tight">
+        {feature.title}
+      </h3>
+    </div>
+    <p className={`font-body-medium ${feature.textColor || "text-[#a1a2a1]"} text-xs leading-snug`}>
+      {feature.description}
+    </p>
+  </CardContent>
+</Card>
             ))}
           </div>
         </div>
 
         <div className="flex flex-col lg:hidden items-center gap-6">
           {featureCards.map((feature, index) => (
-            <Card key={index} className="bg-[#ffffff1a] border-none shadow-md w-full">
+            <Card key={index} className="bg-[#ffffff1a] border-none shadow-md w-auto">
               <CardContent className="p-6 flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   {Array.isArray(feature.icon) ? (
                     feature.icon.map((IconComponent, i) => (
                       <IconComponent
                         key={i}
-                        className="w-5 h-5 text-white"
+                        className="w-2 h-2 text-white"
                         aria-label={`${feature.title} icon`}
                       />
                     ))

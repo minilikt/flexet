@@ -11,7 +11,7 @@ export const CallToAction = () => {
 
       <Card className="max-w-7xl mx-auto border-none bg-transparent">
         <CardContent className="p-0">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col md:flex-row ml-12 items-center justify-between gap-8">
             <div className="flex flex-col gap-8 max-w-[599px]">
               <div className="flex flex-col gap-4">
                 <h2 className="font-['Montserrat',Helvetica] font-semibold text-white text-[57px] tracking-[-0.25px] leading-[64px]">
