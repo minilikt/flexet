@@ -93,7 +93,7 @@ export const Features = () => {
                       feature.icon.map((IconComponent, i) => (
                         <IconComponent
                           key={`icon-${index}-${i}`}
-                          className="w-5 h-5 text-white"
+                          className="size-5 text-white"
                           aria-label={`${feature.title} icon`}
                         />
                       ))

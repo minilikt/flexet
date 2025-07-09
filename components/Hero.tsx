@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Hero = () => {
   return (
     <section className="relative w-full bg-[#191919] pt-[150px] pb-16">
-      <div className="max-w-[1284px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="max-w-[1284px] mx-auto  flex flex-col lg:flex-row items-center justify-between ">
         {/* Left Side: Text Content */}
         <div className="flex flex-col items-start gap-12 lg:w-1/2">
           {/* Badge */}
@@ -46,6 +46,7 @@ export const Hero = () => {
   className="
     absolute 
     bg-[#2196f3] rounded-full opacity-50
+    lg:right-4
 
     /* Mobile styles */
     top-20 left-1/2 -translate-x-1/2 w-[300px] h-[300px] blur-[120px]
@@ -56,7 +57,7 @@ export const Hero = () => {
 />
 
         {/* Right Side: Image */}
-        <div className="relative lg:w-1/2 w-full flex justify-center">
+        <div className="relative lg:w-1/2 lg:left-24 w-full flex justify-center">
 
           <Image
             src="/multiplescreens.png"

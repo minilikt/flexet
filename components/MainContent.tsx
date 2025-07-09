@@ -103,9 +103,9 @@ const StickyScroll = ({
 };
 const content = [
   {
-    title: "Collaborative Editing",
+    title: "01 Download the app & Create Your Profile",
     description:
-      "Work together in real time with your team, clients, and stakeholders. Collaborate on documents, share ideas, and make decisions quickly. With our platform, you can streamline your workflow and increase productivity.",
+      "Get started by creating your profile. Tell us about your fitness goals, role, or gym setup, and we\'ll tailor the experience for you.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
         Collaborative Editing
@@ -113,9 +113,9 @@ const content = [
     ),
   },
   {
-    title: "Real time changes",
+    title: "02 Set Your Goals",
     description:
-      "See changes as they happen. With our platform, you can track every modification in real time. No more confusion about the latest version of your project. Say goodbye to the chaos of version control and embrace the simplicity of real-time updates.",
+      "Define your goals, schedule preferences, and fitness levels. Whether you’re training for an event or just staying fit, we’ve got you covered.",
     content: (
       <div className="flex h-full w-full items-center justify-center text-white">
         <Image
@@ -129,9 +129,9 @@ const content = [
     ),
   },
   {
-    title: "Version control",
+    title: "03 Connect & Start Training",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Explore the unique features of FlexET. Learn about personalized a, nutrition guidance, and progress tracking tailored to your needs.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
         Version control
@@ -139,9 +139,9 @@ const content = [
     ),
   },
   {
-    title: "Running out of content",
+    title: "04 Track Progress & Stay Motivated",
     description:
-      "Experience real-time updates and never stress about version control again. Our platform ensures that you're always working on the most recent version of your project, eliminating the need for constant manual updates. Stay in the loop, keep your team aligned, and maintain the flow of your work without any interruptions.",
+      "Monitor your progress through interactive dashboards. Stay motivated with challenges and track your achievements.",
     content: (
       <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
         Running out of content

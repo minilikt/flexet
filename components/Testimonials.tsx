@@ -1,211 +1,145 @@
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import Image from "next/image";
+"use client";
+import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Quote } from 'lucide-react';
+import Image from 'next/image';
 
-
-export const Testimonials = () => {
-  // Define testimonial data
-  const testimonial = {
-    text: "The user experience of this app is fantastic! It's intuitive and easy to navigate. The personalized workout plans have really helped me stay consistent with my fitness routine.",
-    avatar: "/union.png",
-  };
-
-  // Define user avatars data with opacity values
-  const userAvatars = [
-    { src: "/union.png", opacity: "opacity-20", position: "top-1 left-9" },
+export const TestimonialsSection = () => {
+  const testimonials = [
     {
-      src: "/union.png",
-      opacity: "opacity-30",
-      position: "top-1 left-1",
+      id: 1,
+      name: "Sarah Johnson",
+      role: "Fitness Enthusiast",
+      text: "FitLife completely transformed my approach to health. I've lost 25 pounds and gained so much energy! The personalized workouts and nutrition guidance made all the difference.",
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
     },
     {
-      src: "/union.png",
-      opacity: "opacity-40",
-      position: "top-1 left-1",
+      id: 2,
+      name: "Michael Chen",
+      role: "Marathon Runner",
+      text: "As a competitive runner, I needed a program that could adapt to my intense training schedule. FitLife's recovery-focused approach helped me reduce injuries and improve my PR by 8 minutes!",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
     },
     {
-      src: "/union.png",
-      opacity: "opacity-60",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-70",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-80",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-80",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-70",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-60",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-40",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-30",
-      position: "top-1 left-1",
-    },
-    {
-      src: "/union.png",
-      opacity: "opacity-20",
-      position: "top-1 left-1",
-    },
+      id: 3,
+      name: "Emma Rodriguez",
+      role: "Yoga Instructor",
+      text: "I've tried countless fitness apps, but FitLife stands out with its holistic approach. The mindfulness sessions combined with strength training created the perfect balance for my busy lifestyle.",
+      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
+    }
   ];
 
+  const [activeTestimonial, setActiveTestimonial] = useState(testimonials[0]);
+
+  const handlePreviousTestimonial = () => {
+    const currentIndex = testimonials.findIndex(t => t.id === activeTestimonial.id);
+    const prevIndex = currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1;
+    setActiveTestimonial(testimonials[prevIndex]);
+  };
+
+  const handleNextTestimonial = () => {
+    const currentIndex = testimonials.findIndex(t => t.id === activeTestimonial.id);
+    const nextIndex = currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1;
+    setActiveTestimonial(testimonials[nextIndex]);
+  };
+
+  const handleProfileClick = (id: number) => {
+    const testimonial = testimonials.find(t => t.id === id);
+    if (testimonial) {
+      setActiveTestimonial(testimonial);
+    }
+  };
+
   return (
-    <section className="w-full bg-[#191919] py-16 relative overflow-hidden">
+    <section className="w-full bg-[#191919] py-16 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-center justify-center gap-4 mb-16">
-          <h2 className="font-headline-large font-[number:var(--headline-large-font-weight)] text-white text-[length:var(--headline-large-font-size)] text-center tracking-[var(--headline-large-letter-spacing)] leading-[var(--headline-large-line-height)] whitespace-nowrap [font-style:var(--headline-large-font-style)]">
+        <div className="flex flex-col items-center justify-center gap-4 mb-12 md:mb-16">
+          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-white text-center max-w-3xl">
             Transformations, Triumphs, and Testimonials
           </h2>
-          <p className="max-w-4xl font-body-large font-[number:var(--body-large-font-weight)] text-[#a1a2a1] text-[length:var(--body-large-font-size)] text-center tracking-[var(--body-large-letter-spacing)] leading-[var(--body-large-line-height)] [font-style:var(--body-large-font-style)]">
-            Experience the FitLife difference through the stories of our users.
-            From fitness breakthroughs to lifestyle overhauls, see how FitLife
-            has sparked change and inspired healthier lives.
+          <p className="max-w-3xl font-medium text-lg text-[#a1a2a1] text-center">
+            Experience the FitLife difference through the stories of our users. From fitness breakthroughs to lifestyle overhauls, see how FitLife has sparked change and inspired healthier lives.
           </p>
         </div>
 
         {/* Testimonial Card */}
-        <div className="relative max-w-3xl mx-auto">
-          <div className="relative">
-            {/* Card Shadow Layers */}
-            <div className="absolute w-[90%] h-[404px] top-0 left-[5%] bg-[#454749]"></div>
-            <div className="absolute w-[95%] h-[423px] top-[18px] left-[2.5%] bg-[#8c8786]"></div>
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-12 relative">
+            {/* Shadow Layers */}
+            <div className="hidden md:block absolute w-[90%] h-[85%] top-0 left-[5%] bg-[#454749] rounded-xl"></div>
+            <div className="hidden md:block absolute w-[95%] h-[90%] top-[5%] left-[2.5%] bg-[#8c8786] rounded-xl"></div>
+            
+            {/* Navigation Arrows */}
+            <button
+              onClick={handlePreviousTestimonial}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group hover:bg-[#ff9800] border border-slate-200"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-6 h-6 text-slate-600 group-hover:text-white transition-colors" />
+            </button>
 
-            {/* Main Testimonial Card */}
-            <Card className="relative w-full bg-[#ff9800] overflow-hidden border-none mt-9">
-              <CardContent className="p-8 flex flex-col items-center justify-center min-h-[450px] relative">
-                <Avatar className="w-[66px] h-[66px] mb-12">
-                  <AvatarImage
-                    src={testimonial.avatar}
-                    alt="Testimonial user"
-                  />
-                </Avatar>
+            <button
+              onClick={handleNextTestimonial}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group hover:bg-[#ff9800] border border-slate-200"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-6 h-6 text-slate-600 group-hover:text-white transition-colors" />
+            </button>
 
-                <p className="max-w-[536px] text-center text-m-3white font-['Karla',Helvetica] font-normal text-[15px] leading-[21px] tracking-[0]">
-                  {testimonial.text}
+            {/* Main Card */}
+            <div className="relative w-full bg-[#ff9800] overflow-hidden border-none rounded-xl md:mt-9">
+              <div className="p-6 md:p-8 flex flex-col items-center justify-center min-h-[400px] md:min-h-[450px] relative">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden mb-8 border-4 border-white">
+                  <div className="flex items-center justify-center w-full h-full bg-white/80">
+                    <Quote className="w-8 h-8 text-[#ff9800]" />
+                    
+                  </div>
+                  
+                </div>
+
+                <p className="max-w-2xl text-center text-white font-medium text-base md:text-lg leading-relaxed">
+                  &quot;{activeTestimonial.text}&quot;
                 </p>
 
-                <div className="absolute w-[108px] h-[108px] bottom-0 left-1/2 transform -translate-x-1/2 bg-[#191919] rounded-[54px]"></div>
-              </CardContent>
-            </Card>
-
-            {/* Navigation Buttons */}
-            <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full">
-                <Button
-                variant="outline"
-                className="w-[75px] h-[75px] bg-[#363b3e] border-none rounded-none p-0 flex items-center justify-center"
-                >
-                <Image
-                  width={12}
-                  height={15}
-                  className="w-3 h-[15px]"
-                  alt="Previous"
-                  src="/previous-icon.png"
-                />
-                </Button>
-
-                <Button
-                variant="outline"
-                className="w-[75px] h-[75px] bg-[#363b3e] border-none rounded-none p-0 flex items-center justify-center"
-                >
-                <Image
-                  width={12}
-                  height={15}
-                  className="w-3 h-[15px]"
-                  alt="Next"
-                  src="/next-icon.png"
-                />
-                </Button>
-            </div>
-
-            {/* Bottom Avatar */}
-            <Avatar className="w-24 h-24 absolute -bottom-12 left-1/2 transform -translate-x-1/2">
-              <AvatarImage
-                src="/ellipse-10.png"
-                alt="Featured user"
-                className="object-cover"
-              />
-            </Avatar>
-          </div>
-        </div>
-
-        {/* User Avatars Carousel */}
-        <div className="mt-32 relative">
-          <Carousel className="w-full">
-            <CarouselContent className="flex justify-center">
-              <CarouselItem className="flex justify-center gap-6 basis-auto">
-                {userAvatars.slice(0, 6).map((avatar, index) => (
-                  <div
-                    key={`avatar-left-${index}`}
-                    className={`relative ${avatar.opacity}`}
-                  >
-                    <div className="relative w-[88px] h-[88px] bg-[#dfdcd9] rounded-[44px]">
-                      <Image
-                      width={80}
-                      height={80}
-                      className={`absolute w-20 h-20 ${avatar.position} object-cover`}
-                      alt={`User ${index + 1}`}
-                      src={avatar.src}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </CarouselItem>
-
-              <div className="flex flex-col items-center justify-center gap-2 mx-12">
-                <div className="w-[114px] h-4 font-title-medium font-[number:var(--title-medium-font-weight)] text-white tracking-[var(--title-medium-letter-spacing)] text-[length:var(--title-medium-font-size)] text-center leading-[var(--title-medium-line-height)] whitespace-nowrap [font-style:var(--title-medium-font-style)]">
-                  TALENT SYNC
+                <div className="mt-8 text-center">
+                  <h3 className="font-bold text-xl text-white">{activeTestimonial.name}</h3>
+                  <p className="text-[#f5f5f5]">{activeTestimonial.role}</p>
                 </div>
-                <div className="w-[126px] h-[19px] font-body-large font-[number:var(--body-large-font-weight)] text-[#a1a2a1] tracking-[var(--body-large-letter-spacing)] text-[length:var(--body-large-font-size)] text-center leading-[var(--body-large-line-height)] whitespace-nowrap [font-style:var(--body-large-font-style)]">
-                  Talent Discovery
-                </div>
+
+                
               </div>
-
-              <CarouselItem className="flex justify-center gap-6 basis-auto">
-                {userAvatars.slice(6).map((avatar, index) => (
-                  <div
-                    key={`avatar-right-${index}`}
-                    className={`relative ${avatar.opacity}`}
-                  >
-                    <div className="relative w-[88px] h-[88px] bg-[#dfdcd9] rounded-[44px]">
-                      <Image
-                      width={80}
-                      height={80}
-                      className={`absolute w-20 h-20 ${avatar.position} object-cover`}
-                      alt={`User ${index + 7}`}
-                      src={avatar.src}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </CarouselItem>
-            </CarouselContent>
-          </Carousel>
+            </div>
+          </div>
+          
+          {/* Profile Selector */}
+          <div className="flex justify-center items-center flex-wrap gap-4 md:gap-6">
+            {testimonials.map((testimonial) => (
+              <button
+                key={testimonial.id}
+                onClick={() => handleProfileClick(testimonial.id)}
+                className={`transition-all duration-300 ${
+                  testimonial.id === activeTestimonial.id
+                    ? 'scale-110 ring-2 ring-[#ff9800]'
+                    : 'opacity-80 hover:opacity-100'
+                }`}
+                aria-label={`View ${testimonial.name}'s testimonial`}
+              >
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden relative">
+                  <Image
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 48px, 56px"
+                  />
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

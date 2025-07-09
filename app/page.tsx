@@ -5,7 +5,8 @@ import { Navbar } from "@/components/Navbar";
 
 import { Hero } from "@/components/Hero";
 import { Progress } from "@/components/Progress";
-import { Testimonials } from "@/components/Testimonials";
+import  {TestimonialsSection}  from "@/components/Testimonials";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,9 +17,9 @@ export default function Home() {
       <Features />
       <MainContent />
       <Progress />
-      <Testimonials />
+      <TestimonialsSection />
       <CallToAction />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
