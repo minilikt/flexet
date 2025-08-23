@@ -11,6 +11,7 @@ export const Hero = () => {
           {/* Badge */}
           <Badge className="flex items-center gap-2 px-4 py-2 bg-[#ffffff1a] rounded-2xl hover:bg-[#ffffff1a]">
             <Image src="/barbell.svg" alt="Barbell" width={12} height={12} />
+            
             <span className="[font-family:'Roboto_Mono',Helvetica] font-medium text-white text-[11px] tracking-[0.50px] leading-4 whitespace-nowrap">
               #1 CUTTING EDGE HEALTH & FITNESS SOLUTION
             </span>

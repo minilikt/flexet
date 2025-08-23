@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Bell, ForkKnifeCrossed, LucideClockFading, Pen, Target, User2, Users } from "lucide-react";
+import Image from "next/image";
 
 export const Features = () => {
   const featureCards = [
@@ -58,7 +59,7 @@ export const Features = () => {
   ];
 
   return (
-    <section className="relative w-full bg-[#191919] py-36">
+    <section id="features" className="relative w-full bg-[#191919] py-36">
       <div className="relative w-full max-w-[1440px] mx-auto px-4">
         <div className="flex flex-col items-center gap-4 mb-16 text-center">
           <h2 className="font-headline-large text-white text-3xl sm:text-4xl">
@@ -78,6 +79,13 @@ export const Features = () => {
               <div className="absolute w-[579px] h-[580px] top-[310px] left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3b9cea] to-[#94ccf3] rounded-full" />
               <div className="absolute w-[849px] h-[850px] top-[175px] left-1/2 -translate-x-1/2 border border-[#a1a2a180] rounded-full opacity-50" />
               <div className="absolute w-[1199px] h-[1200px] top-0 left-0 border border-[#a1a2a180] rounded-full opacity-50" />
+            <Image
+              src="/phone.png"
+              alt="Phone"
+              height={800}
+              width={800}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
+            />
             </div>
           </div>
 
@@ -118,7 +126,7 @@ export const Features = () => {
 
         <div className="flex flex-col lg:hidden items-center gap-6">
           {featureCards.map((feature, index) => (
-            <Card key={index} className="bg-[#ffffff1a] border-none shadow-md w-auto">
+            <Card key={index} className="bg-[#ffffff1a] border-none shadow-md w-full">
               <CardContent className="p-6 flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   {Array.isArray(feature.icon) ? (

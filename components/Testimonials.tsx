@@ -1,145 +1,153 @@
-"use client";
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Quote } from 'lucide-react';
-import Image from 'next/image';
+import { Star, Quote } from "lucide-react";
+import { Card, CardContent } from "./ui/card";
+import { Button } from "./ui/button";
 
-export const TestimonialsSection = () => {
+export function Testimonials() {
   const testimonials = [
     {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Fitness Enthusiast",
-      text: "FitLife completely transformed my approach to health. I've lost 25 pounds and gained so much energy! The personalized workouts and nutrition guidance made all the difference.",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
+      name: "Sarah Tadesse",
+      role: "University Student",
+      image: "ST",
+      rating: 5,
+      quote: "The AI workout plans are spot-on! FlexET understands exactly what I need for my busy schedule as a student.",
     },
     {
-      id: 2,
-      name: "Michael Chen",
-      role: "Marathon Runner",
-      text: "As a competitive runner, I needed a program that could adapt to my intense training schedule. FitLife's recovery-focused approach helped me reduce injuries and improve my PR by 8 minutes!",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
+      name: "Michael Alemayehu",
+      role: "Software Developer",
+      image: "MA",
+      rating: 5,
+      quote: "Finally, a fitness app that works offline! Perfect for our internet situation here. The progress tracking is amazing.",
     },
     {
-      id: 3,
-      name: "Emma Rodriguez",
-      role: "Yoga Instructor",
-      text: "I've tried countless fitness apps, but FitLife stands out with its holistic approach. The mindfulness sessions combined with strength training created the perfect balance for my busy lifestyle.",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
-    }
+      name: "Helen Bekele",
+      role: "Marketing Professional",
+      image: "HB",
+      rating: 5,
+      quote: "I love how FlexET adapts to my equipment limitations. No gym? No problem! The bodyweight workouts are fantastic.",
+    },
+    {
+      name: "Daniel Girma",
+      role: "Teacher",
+      image: "DG",
+      rating: 5,
+      quote: "The running tracker has helped me improve my 5K time significantly. The AI coaching tips are incredibly helpful.",
+    },
+    {
+      name: "Rebecca Tesfaye",
+      role: "Entrepreneur",
+      image: "RT",
+      rating: 5,
+      quote: "As a busy entrepreneur, FlexET's personalized quick workouts fit perfectly into my schedule. Highly recommended!",
+    },
+    {
+      name: "Yonas Haile",
+      role: "Medical Student",
+      image: "YH",
+      rating: 5,
+      quote: "The scientific approach behind FlexET's AI recommendations impressed me. It's like having a personal trainer in my pocket.",
+    },
   ];
 
-  const [activeTestimonial, setActiveTestimonial] = useState(testimonials[0]);
-
-  const handlePreviousTestimonial = () => {
-    const currentIndex = testimonials.findIndex(t => t.id === activeTestimonial.id);
-    const prevIndex = currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1;
-    setActiveTestimonial(testimonials[prevIndex]);
-  };
-
-  const handleNextTestimonial = () => {
-    const currentIndex = testimonials.findIndex(t => t.id === activeTestimonial.id);
-    const nextIndex = currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1;
-    setActiveTestimonial(testimonials[nextIndex]);
-  };
-
-  const handleProfileClick = (id: number) => {
-    const testimonial = testimonials.find(t => t.id === id);
-    if (testimonial) {
-      setActiveTestimonial(testimonial);
-    }
-  };
-
   return (
-    <section className="w-full bg-[#191919] py-16 md:py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section id="testimonials" className="py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col items-center justify-center gap-4 mb-12 md:mb-16">
-          <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl text-white text-center max-w-3xl">
-            Transformations, Triumphs, and Testimonials
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Real <span className="text-[#0070F0]">Results</span>
           </h2>
-          <p className="max-w-3xl font-medium text-lg text-[#a1a2a1] text-center">
-            Experience the FitLife difference through the stories of our users. From fitness breakthroughs to lifestyle overhauls, see how FitLife has sparked change and inspired healthier lives.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            See what our beta users are saying about their FlexET experience and transformation.
           </p>
         </div>
 
-        {/* Testimonial Card */}
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-12 relative">
-            {/* Shadow Layers */}
-            <div className="hidden md:block absolute w-[90%] h-[85%] top-0 left-[5%] bg-[#454749] rounded-xl"></div>
-            <div className="hidden md:block absolute w-[95%] h-[90%] top-[5%] left-[2.5%] bg-[#8c8786] rounded-xl"></div>
-            
-            {/* Navigation Arrows */}
-            <button
-              onClick={handlePreviousTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group hover:bg-[#ff9800] border border-slate-200"
-              aria-label="Previous testimonial"
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {testimonials.map((testimonial, index) => (
+            <Card
+              key={index}
+              className="bg-gray-800/50 border-gray-700 hover:border-[#0070F0]/50 transition-all duration-300 backdrop-blur-sm"
             >
-              <ChevronLeft className="w-6 h-6 text-slate-600 group-hover:text-white transition-colors" />
-            </button>
-
-            <button
-              onClick={handleNextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group hover:bg-[#ff9800] border border-slate-200"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-6 h-6 text-slate-600 group-hover:text-white transition-colors" />
-            </button>
-
-            {/* Main Card */}
-            <div className="relative w-full bg-[#ff9800] overflow-hidden border-none rounded-xl md:mt-9">
-              <div className="p-6 md:p-8 flex flex-col items-center justify-center min-h-[400px] md:min-h-[450px] relative">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden mb-8 border-4 border-white">
-                  <div className="flex items-center justify-center w-full h-full bg-white/80">
-                    <Quote className="w-8 h-8 text-[#ff9800]" />
-                    
-                  </div>
-                  
+              <CardContent className="p-6">
+                {/* Quote Icon */}
+                <div className="flex justify-center mb-4">
+                  <Quote className="h-8 w-8 text-[#0070F0] opacity-60" />
                 </div>
 
-                <p className="max-w-2xl text-center text-white font-medium text-base md:text-lg leading-relaxed">
-                  &quot;{activeTestimonial.text}&quot;
+                {/* Rating */}
+                <div className="flex justify-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="h-5 w-5 text-yellow-400 fill-current"
+                    />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <p className="text-gray-300 text-center mb-6 italic leading-relaxed">
+                  "{testimonial.quote}"
                 </p>
 
-                <div className="mt-8 text-center">
-                  <h3 className="font-bold text-xl text-white">{activeTestimonial.name}</h3>
-                  <p className="text-[#f5f5f5]">{activeTestimonial.role}</p>
+                {/* User Info */}
+                <div className="flex items-center justify-center space-x-3">
+                  <div className="w-12 h-12 bg-[#0070F0] rounded-full flex items-center justify-center">
+                    <span className="text-white font-semibold text-sm">
+                      {testimonial.image}
+                    </span>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-white font-semibold">
+                      {testimonial.name}
+                    </div>
+                    <div className="text-gray-400 text-sm">
+                      {testimonial.role}
+                    </div>
+                  </div>
                 </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-                
-              </div>
+        {/* Stats Section */}
+        <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">50+</div>
+              <div className="text-gray-300 text-sm">Beta Users</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">80%</div>
+              <div className="text-gray-300 text-sm">Retention Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">90%</div>
+              <div className="text-gray-300 text-sm">Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">100+</div>
+              <div className="text-gray-300 text-sm">Pre-Signups</div>
             </div>
           </div>
-          
-          {/* Profile Selector */}
-          <div className="flex justify-center items-center flex-wrap gap-4 md:gap-6">
-            {testimonials.map((testimonial) => (
-              <button
-                key={testimonial.id}
-                onClick={() => handleProfileClick(testimonial.id)}
-                className={`transition-all duration-300 ${
-                  testimonial.id === activeTestimonial.id
-                    ? 'scale-110 ring-2 ring-[#ff9800]'
-                    : 'opacity-80 hover:opacity-100'
-                }`}
-                aria-label={`View ${testimonial.name}'s testimonial`}
-              >
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden relative">
-                  <Image
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 48px, 56px"
-                  />
-                </div>
-              </button>
-            ))}
-          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12">
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Join the FlexET Community
+          </h3>
+          <p className="text-gray-300 mb-6">
+            Be part of Ethiopia's growing fitness revolution powered by AI.
+          </p>
+          <Button
+            variant="outline"
+            className="px-12 py-6 rounded-[3px] border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+          >
+              Get Early Access
+          </Button>
         </div>
       </div>
     </section>
   );
-};
-
+}

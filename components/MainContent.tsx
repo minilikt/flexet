@@ -1,158 +1,150 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
+"use client"
+import { useEffect, useRef, useState } from "react";
+import { Button } from "./ui/button";
 
-const StickyScroll = ({
-  content,
-  contentClassName,
-}: {
-  content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode;
-  }[];
-  contentClassName?: string;
-}) => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
-    // target: ref
-    container: ref,
-    offset: ["start start", "end start"],
-  });
-  const cardLength = content.length;
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0,
-    );
-    setActiveCard(closestBreakpointIndex);
-  });
+export const MainContent = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const backgroundColors = [
-    "#0f172a", // slate-900
-    "#000000", // black
-    "#171717", // neutral-900
+  const steps = [
+    {
+      title: "Download the app & Create Your Profile",
+      description: "Get started by creating your profile. Tell us about your fitness goals, role, or gym setup, and we'll tailor the experience for you."
+    },
+    {
+      title: "Set Your Goals",
+      description: "Define your goals, schedule preferences, and fitness levels. Whether you're training for an event or just staying fit, we've got you covered."
+    },
+    {
+      title: "Connect & Start Training",
+      description: "Explore the unique features of FlexET. Learn about personalized workouts, nutrition guidance, and progress tracking tailored to your needs."
+    },
+    {
+      title: "Track Progress & Stay Motivated",
+      description: "Monitor your progress through interactive dashboards. Stay motivated with challenges and track your achievements."
+    },
+    {
+      title: "Achieve & Share Results",
+      description: "Reach your goals and celebrate your progress with our vibrant community. Inspire and be inspired!"
+    }
   ];
-  const linearGradients = [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
-  ];
-
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0],
-  );
 
   useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = stepRefs.current.findIndex(ref => ref === entry.target);
+            if (index !== -1) {
+              setActiveStep(index);
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+        rootMargin: '-20% 0px -20% 0px'
+      }
+    );
+
+    stepRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.div
-      animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-      }}
-      className="relative flex h-[30rem] space-x-10 overflow-y-auto rounded-md p-10 justify-between px-40"
-      ref={ref}
-    >
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
-          {content.map((item, index) => (
-  <motion.div
-    key={item.title + index}
-    className="my-20"
-    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // alternate sides
-    animate={{
-      opacity: activeCard === index ? 1 : 0.3,
-      x: activeCard === index ? 0 : index % 2 === 0 ? -50 : 50,
-    }}
-    transition={{ duration: 0.5 }}
-  >
-    <h2 className="text-2xl font-bold text-slate-100">{item.title}</h2>
-    <p className="text-kg mt-10 max-w-sm text-slate-300">{item.description}</p>
-  </motion.div>
-))}
+    <div id="main-content" className="bg-[#191919] py-16 md:py-24 overflow-clip relative shrink-0 w-full">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-['Montserrat:Medium',_sans-serif] font-medium text-[#ffffff] text-2xl md:text-3xl lg:text-[32px] mb-4">
+            How It Works
+          </h2>
+          <p className="font-['Karla:Regular',_sans-serif] font-normal text-[#a1a2a1] text-[12px] md:text-[14px] lg:text-[16px] tracking-[0.3826px] max-w-2xl mx-auto">
+            FitLife tailors your fitness journey with personalized workouts, nutrition plans, and progress tracking. Ready to experience it?
+          </p>
+        </div>
 
-          <div className="h-40" />
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+          {/* Phone mockup - sticky on desktop */}
+          <div className="flex-1 lg:sticky lg:top-20 flex justify-center">
+            <div className="bg-center bg-cover bg-no-repeat h-[400px] w-[300px] md:h-[500px] md:w-[400px] lg:h-[570px] lg:w-[500px] transition-all duration-700" 
+                 style={{ 
+                   backgroundImage: `url('/women.png')`,
+                   transform: `scale(${0.9 + (activeStep * 0.02)})`,
+                   filter: `brightness(${0.8 + (activeStep * 0.05)})`
+                 }} />
+          </div>
+
+          {/* Scrollable steps */}
+          <div className="flex-1 space-y-32 md:space-y-40 lg:space-y-48" ref={containerRef}>
+            {steps.map((step, index) => (
+              <div 
+                key={index} 
+                ref={el => { stepRefs.current[index] = el; }}
+                className={`flex gap-4 items-start transition-all duration-1000 ease-out min-h-[200px] ${
+                  index === activeStep 
+                    ? 'opacity-100 translate-y-0' 
+                    : index < activeStep 
+                      ? 'opacity-30 -translate-y-8' 
+                      : 'opacity-30 translate-y-8'
+                }`}
+              >
+                <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all duration-700 ${
+                  index === activeStep 
+                    ? 'bg-[#2196F3] scale-110 shadow-lg shadow-[#2196F3]/50' 
+                    : index < activeStep
+                      ? 'bg-[#2196F3]/70'
+                      : 'bg-[#363b3e]'
+                }`}>
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+                <div className="flex-1">
+                  <h3 className={`font-['Roboto_Mono:Regular',_sans-serif] font-normal text-xl md:text-2xl mb-4 transition-all duration-700 ${
+                    index === activeStep 
+                      ? 'text-[#ffffff] scale-105' 
+                      : 'text-[#a1a2a1]'
+                  }`}>
+                    {step.title}
+                  </h3>
+                  <p className={`font-['Karla:Regular',_sans-serif] font-normal text-base md:text-lg transition-all duration-700 ${
+                    index === activeStep 
+                      ? 'text-[#ffffff]' 
+                      : 'text-[#a1a2a1]'
+                  }`}>
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress indicator */}
+        <div className="flex justify-center mt-12 lg:mt-16">
+          {/* <div className="flex gap-2">
+            {steps.map((_, index) => (
+              <div
+                key={index}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  index === activeStep 
+                    ? 'w-8 bg-[#2196F3]' 
+                    : index < activeStep
+                      ? 'w-2 bg-[#2196F3]/70'
+                      : 'w-2 bg-[#363b3e]'
+                }`}
+              />
+            ))}
+          </div> */}
+          <Button onClick={() => {}} className="box-border content-stretch flex gap-2 items-center justify-center px-8 md:px-12 py-4 md:py-6 relative rounded-[7px] border-2 border-[#2196f3] bg-transparent hover:bg-[rgba(33,150,243,0.1)] transition-colors">
+              Get The App Now
+          </Button>
         </div>
       </div>
-      <div
-        style={{ background: backgroundGradient }}
-        className={cn(
-          "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
-          contentClassName,
-        )}
-      >
-        {content[activeCard].content ?? null}
-      </div>
-    </motion.div>
-  );
-};
-const content = [
-  {
-    title: "01 Download the app & Create Your Profile",
-    description:
-      "Get started by creating your profile. Tell us about your fitness goals, role, or gym setup, and we\'ll tailor the experience for you.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Collaborative Editing
-      </div>
-    ),
-  },
-  {
-    title: "02 Set Your Goals",
-    description:
-      "Define your goals, schedule preferences, and fitness levels. Whether you’re training for an event or just staying fit, we’ve got you covered.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center text-white">
-        <Image
-          src="/linear.webp"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "03 Connect & Start Training",
-    description:
-      "Explore the unique features of FlexET. Learn about personalized a, nutrition guidance, and progress tracking tailored to your needs.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white">
-        Version control
-      </div>
-    ),
-  },
-  {
-    title: "04 Track Progress & Stay Motivated",
-    description:
-      "Monitor your progress through interactive dashboards. Stay motivated with challenges and track your achievements.",
-    content: (
-      <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white">
-        Running out of content
-      </div>
-    ),
-  },
-];
-export function MainContent() {
-  return (
-    <div className="w-full py-4">
-      <StickyScroll content={content} />
     </div>
   );
 }
