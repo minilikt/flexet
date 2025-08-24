@@ -49,8 +49,7 @@ export const Hero = () => {
         </div>
       <div>
 
-          {/* Blue glow effect */}
-          {/* <div className="absolute w-[600px] h-[600px] top-0 left-[684px] bg-[#2196f3] rounded-[300px] blur-[250px] opacity-50" /> */}
+         
           <div
   className="
     absolute 
