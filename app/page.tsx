@@ -8,6 +8,7 @@ import  {Testimonials}  from "@/components/Testimonials";
 import { Footer } from "@/components/Footer";
 import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <About />
+      <Contact />
       <Footer />
     </div>
   );

@@ -57,7 +57,7 @@ export function Pricing() {
             Choose Your <span className="text-[#0070F0]">Plan</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Start free and upgrade when you're ready for advanced AI-powered features and analytics.
+            Start free and upgrade when you&apos;re ready for advanced AI-powered features and analytics.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export function Pricing() {
                 <div>
                   <h4 className="font-semibold text-white mb-3 flex items-center">
                     <Zap className="w-4 h-4 mr-2 text-[#0070F0]" />
-                    What's Included
+                    What&apos;s Included
                   </h4>
                   <ul className="space-y-3">
                     {plan.features.map((feature, featureIndex) => (
@@ -145,7 +145,7 @@ export function Pricing() {
               30-Day Money-Back Guarantee
             </h3>
             <p className="text-gray-300">
-              Try FlexET Premium risk-free. If you're not completely satisfied, we'll refund your subscription within 30 days.
+              Try FlexET Premium risk-free. If you&apos;re not completely satisfied, we&apos;ll refund your subscription within 30 days.
             </p>
           </div>
 
@@ -158,7 +158,7 @@ export function Pricing() {
               <div className="bg-gray-800/30 p-4 rounded-lg">
                 <h4 className="font-semibold text-white mb-2">Can I cancel anytime?</h4>
                 <p className="text-gray-300 text-sm">
-                  Yes, you can cancel your Premium subscription at any time. You'll continue to have access until the end of your billing period.
+                  Yes, you can cancel your Premium subscription at any time. You&apos;ll continue to have access until the end of your billing period.
                 </p>
               </div>
               <div className="bg-gray-800/30 p-4 rounded-lg">
@@ -170,7 +170,7 @@ export function Pricing() {
               <div className="bg-gray-800/30 p-4 rounded-lg">
                 <h4 className="font-semibold text-white mb-2">Works offline?</h4>
                 <p className="text-gray-300 text-sm">
-                  Yes! Both Free and Premium plans work offline. Your data syncs when you're back online.
+                  Yes! Both Free and Premium plans work offline. Your data syncs when you&apos;re back online.
                 </p>
               </div>
               <div className="bg-gray-800/30 p-4 rounded-lg">

@@ -86,7 +86,7 @@ export function Testimonials() {
 
                 {/* Quote */}
                 <p className="text-gray-300 text-center mb-6 italic leading-relaxed">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
 
                 {/* User Info */}
@@ -138,7 +138,7 @@ export function Testimonials() {
             Join the FlexET Community
           </h3>
           <p className="text-gray-300 mb-6">
-            Be part of Ethiopia's growing fitness revolution powered by AI.
+            Be part of Ethiopia&apos;s growing fitness revolution powered by AI.
           </p>
           <Button
             variant="outline"

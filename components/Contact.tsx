@@ -1,11 +1,16 @@
+"use client"
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader } from "./ui/card";
+import { contactClient } from "@/lib/ContactActions";
 
 export function Contact() {
+      const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,13 +18,34 @@ export function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
+  setError(null);
+  setSuccess(null);
+
+  try {
+    const result = await contactClient(formData);
+
+    if (!result.success) {
+      setError(result.error || "Something went wrong. Please try again.");
+      return;
+    }
+
+    setSuccess(
+      "Message sent successfully!"
+    );
+    setFormData({ name: "", email: "", subject: "", message: "" }); // reset form
+  } catch (err) {
+    console.error("Request failed:", err);
+    setError("Network error. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -38,19 +64,19 @@ export function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      details: "+251 9XX XXX XXX",
+      details: "+251 922 463 636",
       description: "Call us during business hours",
     },
     {
       icon: MapPin,
       title: "Location",
       details: "Addis Ababa, Ethiopia",
-      description: "Visit us at our office",
+      description: "",
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-black">
+    <section id="contact" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -58,7 +84,7 @@ export function Contact() {
             Get in <span className="text-[#0070F0]">Touch</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Have questions about FlexET? Want to partner with us? We'd love to hear from you.
+            Have questions about FlexET? Want to partner with us? We&apos;d love to hear from you.
           </p>
         </div>
 
@@ -68,7 +94,7 @@ export function Contact() {
             <CardHeader>
               <h3 className="text-2xl font-bold text-white">Send us a Message</h3>
               <p className="text-gray-300">
-                Fill out the form below and we'll get back to you within 24 hours.
+                Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
             </CardHeader>
             <CardContent>
@@ -144,8 +170,10 @@ export function Contact() {
                   size="lg"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  Send Message
-                </Button>
+                    {loading ? "Sending..." : "Send Message"}
+                  </Button>
+                  {error && <p className="text-red-500">{error}</p>}
+                  {success && <p className="text-green-500">{success}</p>}
               </form>
             </CardContent>
           </Card>
@@ -213,18 +241,10 @@ export function Contact() {
                 Follow Us
               </h4>
               <div className="flex space-x-4">
-                <button className="w-10 h-10 bg-[#0070F0] rounded-full flex items-center justify-center hover:bg-[#0060E0] transition-colors">
-                  <span className="text-white font-semibold text-sm">f</span>
-                </button>
-                <button className="w-10 h-10 bg-[#0070F0] rounded-full flex items-center justify-center hover:bg-[#0060E0] transition-colors">
-                  <span className="text-white font-semibold text-sm">t</span>
-                </button>
-                <button className="w-10 h-10 bg-[#0070F0] rounded-full flex items-center justify-center hover:bg-[#0060E0] transition-colors">
-                  <span className="text-white font-semibold text-sm">in</span>
-                </button>
-                <button className="w-10 h-10 bg-[#0070F0] rounded-full flex items-center justify-center hover:bg-[#0060E0] transition-colors">
-                  <span className="text-white font-semibold text-sm">ig</span>
-                </button>
+                <Facebook className="h-6 w-6 text-[#0070F0]" />
+                <Instagram className="h-6 w-6 text-[#0070F0]" />
+                <Twitter className="h-6 w-6 text-[#0070F0]" />
+                <Linkedin className="h-6 w-6 text-[#0070F0]" />
               </div>
             </div>
           </div>

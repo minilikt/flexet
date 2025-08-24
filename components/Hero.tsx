@@ -1,10 +1,11 @@
+"use client"
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export const Hero = () => {
   return (
-    <section className="relative w-full bg-[#191919] pt-[150px] pb-16">
+    <section id="home" className="relative w-full bg-[#191919] pt-[150px] pb-16">
       <div className="max-w-[1284px] mx-auto  flex flex-col lg:flex-row items-center justify-between ">
         {/* Left Side: Text Content */}
         <div className="flex flex-col items-start gap-12 ml-12 lg:w-1/2">
@@ -31,12 +32,19 @@ export const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <Button className="px-8 py-4 rounded-lg bg-[#363B3E] text-white font-body-large">
-              Download Now and Get Fit
-            </Button>
-            <Button className="px-8 py-4 rounded-md border-2 border-[#2196f3] bg-[#191919] text-white font-body-large">
-              Learn More
-            </Button>
+            <Button
+            variant="outline"
+            className="px-12 py-6 rounded-[3px] border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+            onClick={() => {
+              const contactSection = document.getElementById("contact");
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
+              Get Early Access
+          </Button>
+          
           </div>
         </div>
       <div>

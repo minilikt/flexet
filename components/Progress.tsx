@@ -33,7 +33,7 @@ export const Progress = () => {
   ];
 
   return (
-    <section className="w-full bg-[#191919] py-20">
+    <section id="how-it-works" className="w-full bg-[#191919] py-20">
       <div className="flex flex-col items-center max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-20">

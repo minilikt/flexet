@@ -176,7 +176,7 @@ export function About() {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-[#0070F0] mb-1">1K</div>
-                <div className="text-sm text-gray-400">Goal by Dec '25</div>
+                <div className="text-sm text-gray-400">Goal by Dec &apos;25</div>
               </div>
             </div>
             <div className="mt-6 pt-6 border-t border-gray-700">
