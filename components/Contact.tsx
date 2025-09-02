@@ -33,7 +33,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       return;
     }
     toast.success("Message sent successfully!");
-    setFormData({ name: "", email: "", subject: "", message: "" }); // reset form
+    setFormData({ name: "", email: "", subject: "", message: "" }); 
   } catch (err) {
     console.error("Request failed:", err);
     toast.error("Something went wrong. Please try again.");
