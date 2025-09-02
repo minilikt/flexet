@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 import { prisma } from "./prisma";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function contactClient({
@@ -22,8 +23,8 @@ export async function contactClient({
     });
     console.log("💾 Message saved:", savedMessage);
 
-    // 2️⃣ Prepare plain HTML email
-    const html = `
+    // 2️⃣ Prepare plain HTML email for customer
+    const customerHtml = `
       <div style="font-family: sans-serif; padding: 20px;">
         <h1>Hello ${name},</h1>
         <p>We received your message:</p>
@@ -34,17 +35,46 @@ export async function contactClient({
       </div>
     `;
 
-    // 3️⃣ Send email
-    const data = await resend.emails.send({
-      from: "FlexET <noreply@flexet.me>", // must be verified domain
-      to: email, // recipient
+    // 3️⃣ Send confirmation email to customer
+    const customerEmail = await resend.emails.send({
+      from: "FlexET <noreply@flexet.me>", // must be verified domain in Resend
+      to: email,
       subject: subject || "Thanks for contacting FlexET!",
-      html,
+      html: customerHtml,
     });
 
-    console.log("📩 Email sent successfully:", data);
+    console.log("📩 Email sent to customer:", customerEmail);
 
-    return { success: true, savedMessage, emailData: data };
+    // 4️⃣ Prepare notification email for you
+    const adminHtml = `
+      <div style="font-family: sans-serif; padding: 20px;">
+        <h2>📬 New Contact Message</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+        <hr />
+        <p>Saved in DB with ID: ${savedMessage.id}</p>
+      </div>
+    `;
+
+    // Replace with your real inbox (must be verified in Resend if not on a custom domain)
+    const adminEmail = await resend.emails.send({
+      from: "FlexET <noreply@flexet.me>",
+      to: "abrahammulugetaadebash@gmail.com",
+      subject: `New Contact Message from ${name}`,
+      html: adminHtml,
+    });
+
+    console.log("📩 Notification email sent to admin:", adminEmail);
+
+    return {
+      success: true,
+      savedMessage,
+      customerEmail,
+      adminEmail,
+    };
   } catch (err) {
     console.error("❌ Contact action error:", err);
     return {
