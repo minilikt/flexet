@@ -6,6 +6,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import { contactClient } from "@/lib/ContactActions";
+import { toast } from "sonner";
 
 export function Contact() {
       const [loading, setLoading] = useState(false);
@@ -31,14 +32,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       setError(result.error || "Something went wrong. Please try again.");
       return;
     }
-
-    setSuccess(
-      "Message sent successfully!"
-    );
+    toast.success("Message sent successfully!");
     setFormData({ name: "", email: "", subject: "", message: "" }); // reset form
   } catch (err) {
     console.error("Request failed:", err);
-    setError("Network error. Please try again later.");
+    toast.error("Something went wrong. Please try again.");
   } finally {
     setLoading(false);
   }
@@ -172,8 +170,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   <Send className="mr-2 h-5 w-5" />
                     {loading ? "Sending..." : "Send Message"}
                   </Button>
-                  {error && <p className="text-red-500">{error}</p>}
-                  {success && <p className="text-green-500">{success}</p>}
+                  
               </form>
             </CardContent>
           </Card>
