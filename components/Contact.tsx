@@ -9,9 +9,7 @@ import { contactClient } from "@/lib/ContactActions";
 import { toast } from "sonner";
 
 export function Contact() {
-      const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,14 +20,12 @@ export function Contact() {
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   setLoading(true);
-  setError(null);
-  setSuccess(null);
 
   try {
     const result = await contactClient(formData);
 
     if (!result.success) {
-      setError(result.error || "Something went wrong. Please try again.");
+      toast.error(result.error || "Something went wrong. Please try again.");
       return;
     }
     toast.success("Message sent successfully!");
