@@ -57,7 +57,7 @@ export const MainContent = () => {
   }, []);
 
   return (
-    <div id="main-content" className="bg-[#191919] top-18 py-16 md:py-24 overflow-clip relative shrink-0 w-full">
+    <div id="how-it-works" className="bg-[#191919] top-18 py-16 md:py-24 overflow-clip relative shrink-0 w-full">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">

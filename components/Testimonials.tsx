@@ -77,7 +77,7 @@ export function Testimonials() {
           }
         `}</style>
         <div 
-          className="flex space-x-8 animate-[scroll_40s_linear_infinite] will-change-transform testimonials-scroll-content"
+          className="flex space-x-8 animate-[scroll_10s_linear_infinite] will-change-transform testimonials-scroll-content"
         >
           {duplicatedTestimonials.map((testimonial, index) => (
             <div key={index} className="flex-none w-64">

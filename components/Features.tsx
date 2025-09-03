@@ -75,18 +75,18 @@ export const Features = () => {
 
         <div className="hidden lg:block relative h-[1000px] ">
   <div className="absolute w-[1199px] h-[1200px] top-0 left-1/2 -translate-x-1/2">
-    <div className="relative h-[1200px] rounded-full">
+    <div className="relative h-[1100px] rounded-full">
       {/* background circles */}
       <div className="absolute w-[685px] h-[629px] top-[429px] left-1/2 -translate-x-1/2 bg-[#2196f3] rounded-full blur-[100px] opacity-20" />
       <div className="absolute w-[579px] h-[580px] top-[310px] left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3b9cea] to-[#94ccf3] rounded-full" />
       <div className="absolute w-[849px] h-[850px] top-[175px] left-1/2 -translate-x-1/2 border border-[#a1a2a180] rounded-full opacity-50" />
       <div className="absolute w-[1199px] h-[1200px] top-0 left-0 border border-[#a1a2a180] rounded-full opacity-50" />
       <Image
-        src="/phone.png"
+        src="/home.png"
         alt="Phone"
-        height={800}
-        width={800}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
+        height={320}
+        width={320}
+        className="absolute mt-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
       />
     </div>
   </div>
@@ -132,15 +132,19 @@ export const Features = () => {
 
 
         <div className="flex flex-col lg:hidden items-center gap-6">
+        <div className="grid grid-cols-2 gap-4 w-full max-w-md">
           {featureCards.map((feature, index) => (
-            <Card key={index} className="bg-[#ffffff1a] border-none shadow-md w-full">
-              <CardContent className="p-6 flex flex-col gap-2">
+            <Card
+              key={index}
+              className="bg-[#ffffff1a] border-none shadow-md w-full"
+            >
+              <CardContent className="p-3 flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                   {Array.isArray(feature.icon) ? (
                     feature.icon.map((IconComponent, i) => (
                       <IconComponent
                         key={i}
-                        className="w-2 h-2 text-white"
+                        className="w-4 h-4 text-white"
                         aria-label={`${feature.title} icon`}
                       />
                     ))
@@ -158,36 +162,44 @@ export const Features = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
 
           <div className="relative mt-12 w-[300px] h-[300px]">
             <div className="absolute inset-0 bg-[#2196f3] rounded-full blur-[100px] opacity-20" />
             <div className="absolute inset-0 border border-[#a1a2a180] rounded-full opacity-50" />
             <div className="absolute top-[15%] left-[15%] w-[70%] h-[70%] bg-gradient-to-r from-[#3b9cea] to-[#94ccf3] rounded-full" />
+            <Image
+              src="/home.png"
+              alt="Phone"
+              height={800}
+              width={800}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
+            />
           </div>
         </div>
       </div>
       
     </section>
-    <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 mt-14">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">50+</div>
-              <div className="text-gray-300 text-sm">Beta Users</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">80%</div>
-              <div className="text-gray-300 text-sm">Retention Rate</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">90%</div>
-              <div className="text-gray-300 text-sm">Satisfaction</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">100+</div>
-              <div className="text-gray-300 text-sm">Pre-Signups</div>
-            </div>
-          </div>
+    <div className="p-8 rounded-2xl border border-gray-700 w-[90%] mx-auto mt-70">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <div className="text-3xl font-bold text-[#0070F0] mb-2">50+</div>
+          <div className="text-gray-300 text-sm">Beta Users</div>
         </div>
-        </>
+        <div>
+          <div className="text-3xl font-bold text-[#0070F0] mb-2">80%</div>
+          <div className="text-gray-300 text-sm">Retention Rate</div>
+        </div>
+        <div>
+          <div className="text-3xl font-bold text-[#0070F0] mb-2">90%</div>
+          <div className="text-gray-300 text-sm">Satisfaction</div>
+        </div>
+        <div>
+          <div className="text-3xl font-bold text-[#0070F0] mb-2">100+</div>
+          <div className="text-gray-300 text-sm">Pre-Signups</div>
+        </div>
+      </div>
+    </div>
+  </>
   );
 };

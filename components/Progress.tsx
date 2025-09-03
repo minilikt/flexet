@@ -8,34 +8,36 @@ export const Progress = () => {
   // Data for the progress tracking features
   const progressFeatures = [
     {
-      title: "Set Your Goals",
+      title: "Push Beyond Limits",
       description:
-        "Define your fitness goals. Be it weight loss, muscle gain, or improving stamina, we've got you covered.",
+        "Challenge yourself daily, whether it’s one more rep, one extra kilometer, or simply showing up. Small steps create big results.",
       imagePosition: "right",
+      image: "/push.jpg"
     },
     {
-      title: "Track Your Progress",
+      title: "Celebrate Every Victory",
       description:
-        "Visualize your progress with our interactive tracker. Each workout, each healthy meal takes you one step closer to your goal.",
+        "From the first sweat to major milestones, every achievement matters. Your dedication is what builds true strength.",
       imagePosition: "left",
+      image: "/celebrate.jpg"
     },
     {
-      title: "Celebrate Milestones",
+      title: "Inspire & Be Inspired",
       description:
-        "Unlock milestones and celebrate your achievements. Every milestone is a testament to your dedication and hard work.",
+        "Join a movement where every athlete — from beginner to pro — motivates one another. Together, we redefine what’s possible.",
       imagePosition: "right",
+      image: "/inspire.jpg"
     },
-    {
-      title: "Stay Motivated",
-      description:
-        '"Keep track of your progress and stay inspired. Remember, every step counts in your fitness journey."',
-      imagePosition: "left",
-    },
+    // {
+    //   title: "Stay Motivated",
+    //   description:
+    //     '"Keep track of your progress and stay inspired. Remember, every step counts in your fitness journey."',
+    //   imagePosition: "left",
+    // },
   ];
 
   return (
-    <section id="how-it-works" className="w-full bg-[#191919] py-20">
-      
+    <section id="progress" className="w-full bg-[#191919] py-20">
       <div className="flex flex-col items-center max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-20">
@@ -49,16 +51,16 @@ export const Progress = () => {
         </div>
 
         {/* Features Section */}
-        <div className="flex flex-col gap-[72px]">
+        <div className="flex flex-col gap-9">
           {progressFeatures.map((feature, index) => (
             <Card key={index} className="bg-transparent border-none">
               <CardContent className="p-0">
                 <div className="flex flex-row items-center justify-between gap-8">
                   {feature.imagePosition === "left" && (
                     <Image
-                      className=" object-cover"
+                      className="rounded-xl object-cover"
                       alt="Fitness app"
-                      src="/image-2-1.png"
+                      src={feature.image}
                       width={228}
                       height={456}
                     />
@@ -75,9 +77,10 @@ export const Progress = () => {
 
                   {feature.imagePosition === "right" && (
                     <Image
-                      className=" object-cover"
+                      className="rounded-xl object-cover"
                       alt="Fitness app"
-                      src="/image-2-1.png"
+
+                      src={feature.image}
                       width={228}
                       height={456}
                     />

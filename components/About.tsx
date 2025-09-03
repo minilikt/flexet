@@ -41,7 +41,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20">
+    <section id="about" className="py-30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         {/* <div className="text-center mb-16">
@@ -97,16 +97,16 @@ export function About() {
 
         {/* Company Values */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-white text-center mb-12">
+          {/* <h3 className="text-3xl font-bold text-white text-center mb-12">
             Our <span className="text-[#0070F0]">Values</span>
-          </h3>
+          </h3> */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
                 <div
                   key={index}
-                  className="bg-gray-800/30 p-6 rounded-xl border border-gray-700 text-center hover:border-[#0070F0]/50 transition-colors"
+                  className="p-6 rounded-xl border border-gray-700 text-center hover:border-[#0070F0]/50 transition-colors"
                 >
                   <div className="inline-flex items-center justify-center w-12 h-12 bg-[#0070F0]/20 rounded-full mb-4">
                     <IconComponent className="h-6 w-6 text-[#0070F0]" />
@@ -124,7 +124,7 @@ export function About() {
         </div>
 
         {/* Vision & Future */}
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        {/* <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div>
             <h3 className="text-3xl font-bold text-white mb-6">
               Our <span className="text-[#0070F0]">Vision for 2027</span>
@@ -185,7 +185,7 @@ export function About() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

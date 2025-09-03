@@ -52,7 +52,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     {
       icon: Mail,
       title: "Email",
-      details: "hello@flexet.app",
+      details: "support@flexet.me",
       description: "Send us an email anytime",
     },
     {
@@ -207,26 +207,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               })}
             </div>
 
-            {/* Business Hours */}
-            <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Business Hours
-              </h4>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Monday - Friday</span>
-                  <span className="text-white">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Saturday</span>
-                  <span className="text-white">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Sunday</span>
-                  <span className="text-white">Closed</span>
-                </div>
-              </div>
-            </div>
+           
 
             {/* Social Links */}
             <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">

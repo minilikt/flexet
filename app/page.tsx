@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 // import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import FAQs from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -18,9 +19,10 @@ export default function Home() {
       <Features />
       <MainContent />
       <Progress />
+      <About />
       <Testimonials />
       {/* <Pricing /> */}
-      <About />
+      <FAQs />
       <Contact />
       <Footer />
     </div>

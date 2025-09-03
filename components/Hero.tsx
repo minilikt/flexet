@@ -6,14 +6,14 @@ import Image from "next/image";
 export const Hero = () => {
   return (
     <section id="home" className="relative w-full bg-[#191919] pt-[150px] pb-16">
-      <div className="max-w-[1284px] mx-auto  flex flex-col lg:flex-row items-center justify-between ">
+      <div className="max-w-[1284px] mx-auto flex flex-col lg:flex-row items-center justify-between ">
         {/* Left Side: Text Content */}
-        <div className="flex flex-col items-start gap-12 ml-12 lg:w-1/2">
+        <div className="flex flex-col items-start gap-12 ml-8 lg:w-1/2">
           {/* Badge */}
-          <Badge className="flex items-center gap-2 px-4 py-2 bg-[#ffffff1a] rounded-2xl hover:bg-[#ffffff1a]">
+          <Badge className="flex items-center gap-2 p-2 bg-[#ffffff1a] rounded-2xl hover:bg-[#ffffff1a]">
             <Image src="/barbell.svg" alt="Barbell" width={12} height={12} />
             
-            <span className="[font-family:'Roboto_Mono',Helvetica] font-medium text-white text-[12px] tracking-[0.50px] leading-4 whitespace-nowrap ">
+            <span className="[font-family:'Roboto_Mono',Helvetica] font-medium text-white text-[12px] sm:text-[6px] tracking-[0.50px] leading-4 whitespace-nowrap ">
               #1 CUTTING EDGE HEALTH & FITNESS SOLUTION
             </span>
           </Badge>
