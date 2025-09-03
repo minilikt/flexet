@@ -8,7 +8,7 @@ export const Features = () => {
       icon: User2,
       title: "Personalized Workout Plans",
       description: "Tailored fitness routines to meet your unique goals.",
-      position: "top-0 left-[156px]",
+      position: "top-0 left-[310px] ",
     },
     {
       icon: Target,
@@ -39,7 +39,7 @@ export const Features = () => {
       icon: Users,
       title: "Community Features",
       description: "Join a supportive community of fitness enthusiasts.",
-      position: "top-[624px] left-[900px]",
+      position: "top-[500px] left-[920px]",
     },
     {
       icon: ForkKnifeCrossed,
@@ -59,70 +59,77 @@ export const Features = () => {
   ];
 
   return (
+    <>
     <section id="features" className="relative w-full bg-[#191919] py-36">
-      <div className="relative w-full max-w-[1440px] mx-auto px-4">
+      <div className="relative w-full max-w-[1440px] mx-auto px-4 ">
         <div className="flex flex-col items-center gap-4 mb-16 text-center">
-          <h2 className="font-headline-large text-white text-3xl sm:text-4xl">
-            Features Tailored for Your Success
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Features <span className="text-[#0070F0]">Tailored</span>
           </h2>
-          <p className="max-w-[796px] text-[#a1a2a1] text-base sm:text-lg">
+          <p className="max-w-[796px] text-[#a1a2a1] text-base sm:text-lg mb-16">
             Explore our range of features designed to support you every step of
             the way. From personalized workout plans to nutrition tracking,
             we&apos;ve got you covered!
           </p>
         </div>
 
-        <div className="hidden lg:block relative h-[1000px]">
-          <div className="absolute w-[1199px] h-[1200px] top-0 left-1/2 -translate-x-1/2">
-            <div className="relative h-[1200px] rounded-full">
-              <div className="absolute w-[685px] h-[629px] top-[429px] left-1/2 -translate-x-1/2 bg-[#2196f3] rounded-full blur-[100px] opacity-20" />
-              <div className="absolute w-[579px] h-[580px] top-[310px] left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3b9cea] to-[#94ccf3] rounded-full" />
-              <div className="absolute w-[849px] h-[850px] top-[175px] left-1/2 -translate-x-1/2 border border-[#a1a2a180] rounded-full opacity-50" />
-              <div className="absolute w-[1199px] h-[1200px] top-0 left-0 border border-[#a1a2a180] rounded-full opacity-50" />
-            <Image
-              src="/phone.png"
-              alt="Phone"
-              height={800}
-              width={800}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
-            />
-            </div>
-          </div>
-
-          <div className="absolute w-full  top-[100px] left-0">
-            {featureCards.map((feature, index) => (
-              <Card
-  key={`feature-${index}`}
-  className={`absolute ${feature.position} bg-[#ffffff1a] shadow-[0px_2px_4px_#00000040] border-none w-[260px]`}
->
-  <CardContent className="flex flex-col items-start gap-1.5 p-4">
-    <div className="flex items-center gap-1 w-full">
-      {Array.isArray(feature.icon) ? (
-        feature.icon.map((IconComponent, i) => (
-          <IconComponent
-            key={`icon-${index}-${i}`}
-            className="size-4 text-white"
-            aria-label={`${feature.title} icon`}
-          />
-        ))
-      ) : (
-        <feature.icon 
-          className="size-4 text-white" 
-          aria-label={`${feature.title} icon`} 
-        />
-      )}
-      <h3 className="font-title-medium text-white text-sm leading-tight">
-        {feature.title}
-      </h3>
+        <div className="hidden lg:block relative h-[1000px] ">
+  <div className="absolute w-[1199px] h-[1200px] top-0 left-1/2 -translate-x-1/2">
+    <div className="relative h-[1200px] rounded-full">
+      {/* background circles */}
+      <div className="absolute w-[685px] h-[629px] top-[429px] left-1/2 -translate-x-1/2 bg-[#2196f3] rounded-full blur-[100px] opacity-20" />
+      <div className="absolute w-[579px] h-[580px] top-[310px] left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3b9cea] to-[#94ccf3] rounded-full" />
+      <div className="absolute w-[849px] h-[850px] top-[175px] left-1/2 -translate-x-1/2 border border-[#a1a2a180] rounded-full opacity-50" />
+      <div className="absolute w-[1199px] h-[1200px] top-0 left-0 border border-[#a1a2a180] rounded-full opacity-50" />
+      <Image
+        src="/phone.png"
+        alt="Phone"
+        height={800}
+        width={800}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
+      />
     </div>
-    <p className={`font-body-medium ${feature.textColor || "text-[#a1a2a1]"} text-xs leading-snug`}>
-      {feature.description}
-    </p>
-  </CardContent>
-</Card>
-            ))}
-          </div>
-        </div>
+  </div>
+
+  {/* Circle layout */}
+  <div className="absolute inset-0 flex items-center justify-center">
+    {featureCards.map((feature, index) => {
+      const angle = (index / featureCards.length) * 2 * Math.PI - Math.PI / 2; // start at top
+      const radius = 500; // distance from center
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+
+      return (
+        <Card
+          key={index}
+          className="absolute bg-[#ffffff1a] shadow-[0px_2px_4px_#00000040] border-none w-[260px]"
+          style={{
+            left: `calc(50% + ${x}px)`,
+            top: `calc(50% + ${y}px)`,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <CardContent className="flex flex-col items-start gap-1.5 p-4">
+            <div className="flex items-center gap-1 w-full">
+              <feature.icon className="size-4 text-white" />
+              <h3 className="font-title-medium text-white text-sm leading-tight">
+                {feature.title}
+              </h3>
+            </div>
+            <p
+              className={`font-body-medium ${
+                feature.textColor || "text-[#a1a2a1]"
+              } text-xs leading-snug`}
+            >
+              {feature.description}
+            </p>
+          </CardContent>
+        </Card>
+      );
+    })}
+  </div>
+</div>
+
 
         <div className="flex flex-col lg:hidden items-center gap-6">
           {featureCards.map((feature, index) => (
@@ -159,6 +166,28 @@ export const Features = () => {
           </div>
         </div>
       </div>
+      
     </section>
+    <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 mt-14">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">50+</div>
+              <div className="text-gray-300 text-sm">Beta Users</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">80%</div>
+              <div className="text-gray-300 text-sm">Retention Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">90%</div>
+              <div className="text-gray-300 text-sm">Satisfaction</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-[#0070F0] mb-2">100+</div>
+              <div className="text-gray-300 text-sm">Pre-Signups</div>
+            </div>
+          </div>
+        </div>
+        </>
   );
 };

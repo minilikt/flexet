@@ -13,7 +13,7 @@ export const Hero = () => {
           <Badge className="flex items-center gap-2 px-4 py-2 bg-[#ffffff1a] rounded-2xl hover:bg-[#ffffff1a]">
             <Image src="/barbell.svg" alt="Barbell" width={12} height={12} />
             
-            <span className="[font-family:'Roboto_Mono',Helvetica] font-medium text-white text-[11px] tracking-[0.50px] leading-4 whitespace-nowrap">
+            <span className="[font-family:'Roboto_Mono',Helvetica] font-medium text-white text-[12px] tracking-[0.50px] leading-4 whitespace-nowrap ">
               #1 CUTTING EDGE HEALTH & FITNESS SOLUTION
             </span>
           </Badge>
@@ -24,22 +24,18 @@ export const Hero = () => {
               New way to track <br />
               your progression
             </h1>
-
-            <p className="text-white w-full max-w-[456px] font-body-medium text-base leading-relaxed">
+            <div className="text-white  max-w-[456px] font-body-medium text-base leading-relaxed">
               Track your workouts, monitor your progress, and stay motivated with our easy-to-use health and fitness mobile app.
-            </p>
+            </div>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
             <Button
             variant="outline"
-            className="px-12 py-6 rounded-[3px] border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+            className="px-12 py-6 hover:bg-[#2196f3] rounded-md border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
             onClick={() => {
-              const contactSection = document.getElementById("contact");
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth" });
-              }
+              window.open("https://forms.gle/zJPRD7YBFCXG89iK9", "_blank");
             }}
           >
               Get Early Access

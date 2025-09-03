@@ -1,21 +1,21 @@
 import { Users, Target, Globe, Award } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
+// import { Card, CardContent } from "./ui/card";
 
 export function About() {
-  const founders = [
-    {
-      name: "Abraham Mulugeta",
-      role: "CEO & Co-Founder",
-      image: "AM",
-      bio: "Passionate about leveraging AI to solve real-world problems in fitness and health. Abraham brings experience in product strategy and a deep understanding of the Ethiopian tech landscape.",
-    },
-    {
-      name: "Kaleab Denbel",
-      role: "CTO & Co-Founder",
-      image: "KD",
-      bio: "Expert in AI/ML and mobile development with a focus on creating robust, offline-capable applications. Kaleab leads our technical vision and product architecture.",
-    },
-  ];
+  // const founders = [
+  //   {
+  //     name: "Abraham Mulugeta",
+  //     role: "CEO & Co-Founder",
+  //     image: "AM",
+  //     bio: "Passionate about leveraging AI to solve real-world problems in fitness and health. Abraham brings experience in product strategy and a deep understanding of the Ethiopian tech landscape.",
+  //   },
+  //   {
+  //     name: "Kaleab Denbel",
+  //     role: "CTO & Co-Founder",
+  //     image: "KD",
+  //     bio: "Expert in AI/ML and mobile development with a focus on creating robust, offline-capable applications. Kaleab leads our technical vision and product architecture.",
+  //   },
+  // ];
 
   const values = [
     {
@@ -44,27 +44,27 @@ export function About() {
     <section id="about" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        {/* <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
             About <span className="text-[#0070F0]">FlexET</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Founded in October 2023, FlexET is revolutionizing fitness in Ethiopia with AI-powered personalization and accessibility.
           </p>
-        </div>
+        </div> */}
 
         {/* Mission Statement */}
-        <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 lg:p-12 rounded-2xl border border-gray-700 mb-16 text-center">
+        {/* <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 lg:p-12 rounded-2xl border border-gray-700 mb-16 text-center">
           <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">
             Our Mission
           </h3>
           <p className="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto">
             To empower every Ethiopian with AI-driven fitness solutions that work in their daily lives. We believe that geography, equipment limitations, or connectivity should never be barriers to achieving your fitness goals.
           </p>
-        </div>
+        </div> */}
 
         {/* Founders */}
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <h3 className="text-3xl font-bold text-white text-center mb-12">
             Meet Our <span className="text-[#0070F0]">Founders</span>
           </h3>
@@ -93,7 +93,7 @@ export function About() {
               </Card>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Company Values */}
         <div className="mb-16">

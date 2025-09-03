@@ -1,10 +1,11 @@
+"use client"
 import Link from "next/link";
 
 export const Footer = () => {
   return (
     <footer className="bg-exam-purple-dark text-white pt-16 pb-8">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 px-4 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 mx-4 md:px-0">
           <div>
             <h3 className="text-2xl font-bold mb-4">
               Flexet
@@ -17,7 +18,7 @@ export const Footer = () => {
             <ul className="space-y-2">
               {["Home", "Features", "How it works", "Testimonials", "Download the app"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                  <Link href={`#${item.toLowerCase().replace(/\s/g, '')}`} className="text-gray-300 hover:text-white transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -29,9 +30,21 @@ export const Footer = () => {
             <ul className="space-y-2">
               {["About Us", "Careers", "Privacy Policy", "Terms of Service", "Contact Us"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="text-gray-300 hover:text-white transition-colors">
+                    <Link
+                    href={`#${item.toLowerCase().replace(/\s/g, '')}`}
+                    className="text-gray-300 hover:text-white transition-colors"
+                    scroll={false}
+                    onClick={e => {
+                      e.preventDefault();
+                      const id = item.toLowerCase().replace(/\s/g, '');
+                      const el = document.getElementById(id);
+                      if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                    >
                     {item}
-                  </Link>
+                    </Link>
                 </li>
               ))}
             </ul>

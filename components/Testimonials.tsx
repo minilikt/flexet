@@ -1,6 +1,5 @@
+"use client"
 import { Star, Quote } from "lucide-react";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
 
 export function Testimonials() {
   const testimonials = [
@@ -48,106 +47,91 @@ export function Testimonials() {
     },
   ];
 
+  // Duplicate the testimonials for the infinite scroll effect
+  const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
   return (
-    <section id="testimonials" className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Real <span className="text-[#0070F0]">Results</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See what our beta users are saying about their FlexET experience and transformation.
-          </p>
-        </div>
+    <section id="testimonials" className="py-20 bg-[#191919]">
+      {/* Section Header */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+          Real <span className="text-[#0070F0]">Results</span>
+        </h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          See what our beta users are saying about their FlexET experience and transformation.
+        </p>
+      </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="bg-gray-800/50 border-gray-700 hover:border-[#0070F0]/50 transition-all duration-300 backdrop-blur-sm"
-            >
-              <CardContent className="p-6">
-                {/* Quote Icon */}
-                <div className="flex justify-center mb-4">
-                  <Quote className="h-8 w-8 text-[#0070F0] opacity-60" />
-                </div>
-
-                {/* Rating */}
-                <div className="flex justify-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <p className="text-gray-300 text-center mb-6 italic leading-relaxed">
-                  &quot;{testimonial.quote}&quot;
-                </p>
-
-                {/* User Info */}
-                <div className="flex items-center justify-center space-x-3">
-                  <div className="w-12 h-12 bg-[#0070F0] rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold text-sm">
-                      {testimonial.image}
-                    </span>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-white font-semibold">
-                      {testimonial.name}
+      {/* Infinite Scroll Container */}
+      <div className="relative w-full overflow-x-auto py-12 testimonials-scroll-container">
+        <style jsx>{`
+          @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .testimonials-scroll-container:hover .testimonials-scroll-content {
+            animation-play-state: paused;
+          }
+          .testimonials-scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+        <div 
+          className="flex space-x-8 animate-[scroll_40s_linear_infinite] will-change-transform testimonials-scroll-content"
+        >
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <div key={index} className="flex-none w-64">
+              {/* This div acts as the card with a fixed height */}
+              <div
+                className="rounded-xl border  text-card-foreground shadow bg-gray-800/50 border-gray-700 hover:border-[#0070F0]/50 transition-all duration-300 backdrop-blur-sm h-80"
+              >
+                {/* This div acts as the card content with proper spacing */}
+                <div className="p-6 flex flex-col h-full justify-between">
+                  <div>
+                    {/* Quote Icon */}
+                    <div className="flex justify-center mb-4">
+                      <Quote className="h-8 w-8 text-[#0070F0] opacity-60" />
                     </div>
-                    <div className="text-gray-400 text-sm">
-                      {testimonial.role}
+
+                    {/* Rating */}
+                    <div className="flex justify-center mb-4">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-5 w-5 text-yellow-400 fill-current"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <p className="text-gray-300 text-center mb-6 italic leading-relaxed">
+                      &quot;{testimonial.quote}&quot;
+                    </p>
+                  </div>
+                  
+                  {/* User Info */}
+                  <div className="flex items-center justify-center space-x-3 mt-auto">
+                    <div className="w-12 h-12 bg-[#0070F0] rounded-full flex items-center justify-center">
+                      <span className="text-white font-semibold text-sm">
+                        {testimonial.image}
+                      </span>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-white font-semibold">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        {testimonial.role}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
-
-        {/* Stats Section */}
-        <div className="bg-gradient-to-r from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">50+</div>
-              <div className="text-gray-300 text-sm">Beta Users</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">80%</div>
-              <div className="text-gray-300 text-sm">Retention Rate</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">90%</div>
-              <div className="text-gray-300 text-sm">Satisfaction</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-[#0070F0] mb-2">100+</div>
-              <div className="text-gray-300 text-sm">Pre-Signups</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Join the FlexET Community
-          </h3>
-          <p className="text-gray-300 mb-6">
-            Be part of Ethiopia&apos;s growing fitness revolution powered by AI.
-          </p>
-          <Button
-            variant="outline"
-            className="px-12 py-6 rounded-[3px] border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
-          >
-              Get Early Access
-          </Button>
-        </div>
       </div>
+      
     </section>
   );
 }

@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
@@ -34,11 +35,12 @@ export const Progress = () => {
 
   return (
     <section id="how-it-works" className="w-full bg-[#191919] py-20">
+      
       <div className="flex flex-col items-center max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-20">
-          <h2 className="font-headline-large text-white text-center">
-            Track Your Fitness Journey with Ease!
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            Track Your Fit<span className="text-[#0070F0]">ness with ease!</span>
           </h2>
           <p className="font-body-large text-[#a1a2a1] text-center max-w-3xl">
             With our Interactive Progress Tracker, monitor your progress in
@@ -94,9 +96,12 @@ export const Progress = () => {
           </p>
           <Button
             variant="outline"
-            className="px-12 py-6 rounded-[3px] border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+            className="px-12 py-6 hover:bg-[#2196f3] rounded-md border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+            onClick={() => {
+              window.open("https://forms.gle/zJPRD7YBFCXG89iK9", "_blank");
+            }}
           >
-            Download The App
+              Download the App
           </Button>
         </div>
       </div>

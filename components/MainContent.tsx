@@ -57,12 +57,12 @@ export const MainContent = () => {
   }, []);
 
   return (
-    <div id="main-content" className="bg-[#191919] py-16 md:py-24 overflow-clip relative shrink-0 w-full">
+    <div id="main-content" className="bg-[#191919] top-18 py-16 md:py-24 overflow-clip relative shrink-0 w-full">
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-['Montserrat:Medium',_sans-serif] font-medium text-[#ffffff] text-2xl md:text-3xl lg:text-[32px] mb-4">
-            How It Works
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+            How it <span className="text-[#0070F0]">Works</span>
           </h2>
           <p className="font-['Karla:Regular',_sans-serif] font-normal text-[#a1a2a1] text-[12px] md:text-[14px] lg:text-[16px] tracking-[0.3826px] max-w-2xl mx-auto">
             FitLife tailors your fitness journey with personalized workouts, nutrition plans, and progress tracking. Ready to experience it?
@@ -81,12 +81,12 @@ export const MainContent = () => {
           </div>
 
           {/* Scrollable steps */}
-          <div className="flex-1 space-y-32 md:space-y-40 lg:space-y-48" ref={containerRef}>
+          <div className="flex-1 space-y-10 md:space-y-40 lg:space-y-48" ref={containerRef}>
             {steps.map((step, index) => (
               <div 
                 key={index} 
                 ref={el => { stepRefs.current[index] = el; }}
-                className={`flex gap-4 items-start transition-all duration-1000 ease-out min-h-[200px] ${
+                className={`flex gap-8 items-start transition-all duration-1000 ease-out min-h-[200px] ${
                   index === activeStep 
                     ? 'opacity-100 translate-y-0' 
                     : index < activeStep 
@@ -96,9 +96,9 @@ export const MainContent = () => {
               >
                 <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg transition-all duration-700 ${
                   index === activeStep 
-                    ? 'bg-[#2196F3] scale-110 shadow-lg shadow-[#2196F3]/50' 
+                    ? 'bg-[#0070F0] scale-110 shadow-lg shadow-[#2196F3]/50' 
                     : index < activeStep
-                      ? 'bg-[#2196F3]/70'
+                      ? 'bg-[#0070F0]/70'
                       : 'bg-[#363b3e]'
                 }`}>
                   {String(index + 1).padStart(2, '0')}
@@ -140,8 +140,14 @@ export const MainContent = () => {
               />
             ))}
           </div> */}
-          <Button onClick={() => {}} className="box-border content-stretch flex gap-2 items-center justify-center px-8 md:px-12 py-4 md:py-6 relative rounded-[7px] border-2 border-[#2196f3] bg-transparent hover:bg-[rgba(33,150,243,0.1)] transition-colors">
-              Get The App Now
+          <Button
+            variant="outline"
+            className="px-12 py-6 hover:bg-[#2196f3] rounded-md border-2 border-solid border-[#2196f3] bg-[#191919] font-body-large text-[#FFFFFF]"
+            onClick={() => {
+              window.open("https://forms.gle/zJPRD7YBFCXG89iK9", "_blank");
+            }}
+          >
+              Get The App
           </Button>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { Hero } from "@/components/Hero";
 import { Progress } from "@/components/Progress";
 import  {Testimonials}  from "@/components/Testimonials";
 import { Footer } from "@/components/Footer";
-import { Pricing } from "@/components/Pricing";
+// import { Pricing } from "@/components/Pricing";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 
@@ -19,7 +19,7 @@ export default function Home() {
       <MainContent />
       <Progress />
       <Testimonials />
-      <Pricing />
+      {/* <Pricing /> */}
       <About />
       <Contact />
       <Footer />

@@ -10,8 +10,9 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "About", href: "#about" },
-  { label: "Pricing", href: "#pricing" },
+  // { label: "About", href: "#about" },
+  { label: "Testimonials", href: "#testimonials" },
+  // { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -43,72 +44,71 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <div
-      className={`w-full fixed top-0 left-0 z-50 transition-all ${
-        isScrolled ? "backdrop-blur-md bg-black/50" : "bg-transparent"
-      }`}
-    >
-      <div className="flex items-center justify-between px-6 lg:px-24 py-4 w-full">
-        {/* Logo */}
-        <div className="relative w-[133px] h-[37px] flex items-center">
-          <Image
-            alt="flexet logo"
-            src="/logo.svg"
-            width={19}
-            height={19}
-            className="mr-2"
-          />
-          <span className="font-mono text-white text-2xl">FlexET</span>
-        </div>
+    <div className={`w-full fixed left-0 z-50 transition-all ${
+    isScrolled ? "top-4" : "top-0"
+  }`}>
+  <div className="flex items-center justify-between px-6 lg:px-24 py-4 w-full">
+    {/* Logo (left) */}
+    <div  className={`${isScrolled ? "hidden" : "flex"}`}>
+      <Image
+        alt="flexet logo"
+        src="/logo.svg"
+        width={19}
+        height={19}
+        className="mr-2"
+      />
+      <span className="font-mono text-white text-2xl">FlexET</span>
+    </div>
 
-        {/* Desktop Nav */}
-        {!isMobile && (
-          <div className="flex items-center gap-6">
+    {/* Desktop Nav (center) */}
+    {!isMobile && (
+      <div className="absolute left-1/2 -translate-x-1/2 ">
+        <div
+          className={`flex items-center ${
+            isScrolled
+              ? "backdrop-blur-md bg-black/50 py-3 gap-6 rounded-full px-8"
+              : "bg-transparent gap-6"
+          }`}
+        >
+          {navItems.map((item) => (
+            <button
+              key={item.href}
+              onClick={() => scrollToSection(item.href)}
+              className="font-mono font-bold text-white text-base hover:text-blue-400 transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {/* Language / Mobile Menu (right) */}
+    {isMobile ? (
+      <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" aria-label="Open menu">
+            <Menu className="w-5 h-5 text-white" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="bg-[#191919] text-white">
+          <div className="mt-12 flex flex-col gap-6 px-2">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="font-mono font-bold text-white text-base hover:text-blue-400 transition-colors"
+                className="text-lg font-semibold hover:text-blue-400 transition-colors"
               >
                 {item.label}
               </button>
             ))}
           </div>
-        )}
-
-        {/* Language or Mobile Menu */}
-        {isMobile ? (
-          
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open menu">
-                <Menu className="w-5 h-5 text-white" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="bg-[#191919] text-white">
-              <div className="mt-12 flex flex-col gap-6 px-2">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-lg font-semibold hover:text-blue-400 transition-colors"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <Image
-            src="/language.png"
-            alt="Language"
-            width={32}
-            height={32}
-            className="object-cover"
-          />
-        )}
-      </div>
-    </div>
+        </SheetContent>
+      </Sheet>
+    ) : (
+      <div className="hidden"></div>
+    )}
+  </div>
+</div>
   );
 };
