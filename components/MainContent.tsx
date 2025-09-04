@@ -147,7 +147,7 @@ export const MainContent = () => {
               window.open("https://forms.gle/zJPRD7YBFCXG89iK9", "_blank");
             }}
           >
-              Get The App
+              Get Early Access
           </Button>
         </div>
       </div>

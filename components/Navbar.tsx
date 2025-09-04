@@ -87,9 +87,9 @@ export const Navbar = () => {
     {isMobile ? (
       <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" aria-label="Open menu">
-            <Menu className="w-5 h-5 text-white" />
-          </Button>
+            <Button variant="ghost" size="icon" aria-label="Open menu" className="rounded-full shadow-[0_0_10px_2px_rgba(59,130,246,0.4)] hover:shadow-[0_0_14px_4px_rgba(59,130,246,0.6)] flex items-center justify-center">
+              <Menu className="w-5 h-5 text-white" />
+            </Button>
         </SheetTrigger>
         <SheetContent side="left" className="bg-[#191919] text-white">
           <div className="mt-12 flex flex-col gap-6 px-2">

@@ -104,7 +104,7 @@ export const Progress = () => {
               window.open("https://forms.gle/zJPRD7YBFCXG89iK9", "_blank");
             }}
           >
-              Download the App
+              Get Early Access
           </Button>
         </div>
       </div>
