@@ -61,16 +61,16 @@ export const Progress = () => {
                       className="rounded-xl object-cover"
                       alt="Fitness app"
                       src={feature.image}
-                      width={228}
+                      width={130}
                       height={456}
                     />
                   )}
 
                   <div className="flex flex-col items-start gap-[9px] max-w-[465px]">
-                    <h3 className="font-['Montserrat',Helvetica] font-normal text-white text-[22.5px] leading-[31.5px]">
+                    <h3 className="font-['Montserrat',Helvetica] font-normal text-white sm:text-md lg:text-[22.5px] leading-[31.5px]">
                       {feature.title}
                     </h3>
-                    <p className="font-['Karla',Helvetica] font-normal text-[#a1a2a1] text-lg tracking-[0.56px] leading-[27px]">
+                    <p className="font-['Karla',Helvetica] font-normal text-[#a1a2a1] sm:text-sm lg:text-lg tracking-[0.56px] leading-[27px]">
                       {feature.description}
                     </p>
                   </div>
@@ -81,7 +81,7 @@ export const Progress = () => {
                       alt="Fitness app"
 
                       src={feature.image}
-                      width={228}
+                      width={200}
                       height={456}
                     />
                   )}

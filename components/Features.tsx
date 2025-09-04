@@ -171,9 +171,9 @@ export const Features = () => {
             <Image
               src="/home.png"
               alt="Phone"
-              height={800}
-              width={800}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain rounded-full"
+              height={200}
+              width={200}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain"
             />
           </div>
         </div>
