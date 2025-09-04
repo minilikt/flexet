@@ -41,12 +41,11 @@ export const Progress = () => {
       <div className="flex flex-col items-center max-w-6xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-4 mb-20">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Track Your Fit<span className="text-[#0070F0]">ness with ease!</span>
+          <h2 className="text-3xl sm:text-4xl text-center lg:text-5xl font-bold text-white mb-6">
+            Your Fitness Journey, <span className="text-[#0070F0]">Redefined</span>
           </h2>
           <p className="font-body-large text-[#a1a2a1] text-center max-w-3xl">
-            With our Interactive Progress Tracker, monitor your progress in
-            real-time and stay motivated.
+            Fitness is more than workouts — it’s about growth, balance, and consistency. Every step you take brings you closer to the strongest version of yourself.
           </p>
         </div>
 
